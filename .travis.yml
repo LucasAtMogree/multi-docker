@@ -15,7 +15,7 @@ after_success:
   - docker build -t lucasatmogree/complex-nginx -f ./nginx/Dockerfile ./nginx
   - docker build -t lucasatmogree/complex-server -f ./server/Dockerfile ./server
   - docker build -t lucasatmogree/complex-worker -f ./client/Dockerfile ./worker
-  - docker login --username "$DOCKER_ID" --password "$DOCKER_PASSWORD"
+  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_ID --password-stdin
   - docker push lucasatmogree/complex-client
   - docker push lucasatmogree/complex-nginx
   - docker push lucasatmogree/complex-server
